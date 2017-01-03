@@ -1,0 +1,130 @@
+body{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	background: hsl(210, 30%, 50%);
+	padding-top: 3em;
+	color: #fff;
+	font-family: "Consolas", monospace;
+}
+
+*, *:after, *:before{
+	box-sizing: border-box;
+}
+
+div{
+	flex: 15em;
+	height: 15em;
+	padding: 2em;
+	margin: 2em;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	background: salmon;
+	border-radius: 4px;
+	box-shadow: 1px 1px 0 #C3645A,
+				2px 2px 0 #C3645A,
+				3px 3px 0 #C3645A,
+				4px 4px 0 #C3645A,
+				5px 5px 0 #C3645A;
+
+	/* Transition-property that handles the transition for every div on the page */
+	transition: transform 1s ease;
+}
+
+section{
+	flex:1;
+	display: flex;
+	flex-flow: row wrap;
+	transition: transform 1s ease;
+	/* The perspective property is applied to the parent element and all
+	children will be seen from this perspective */
+	perspective: 500px;
+}
+
+/*Change these to match the divs descriptions */
+
+.slideleft:hover{
+	transform: translate(-1000px, 0); /*Move div to the left, off screen */
+
+}
+
+.rotate:hover{
+	transform: perspective(500px) rotateX(180deg); /* Change the perpective and rotate the div */
+}
+
+.skew:hover{
+	transform: skew(30deg, 10deg); /*Skew by both X and Y-axis */
+}
+
+.skew2:hover{
+	transform: rotateY(180deg); /*Rotate by the Y-axis, x and z also available to rotate */
+}
+
+.scale:hover{
+	transform: scale(1.2); /*Scale just a bit!! */
+}
+
+.translate{
+	transition: transform 100ms ease;
+
+}
+
+.translate:hover{
+	transform: translate(-2px, 2px); /*Small translate create nice nice effect */
+}
+
+.scaleandrotate:hover{
+	/*When we apply two transform properties, remember to separate with space and not comma */
+	transform: scale(1.1) rotateZ(5deg);  
+}
+
+.timing{
+	/* When applying multiple transitions, separate with comma */
+	transition: background 5s ease,
+				transform 1s ease;
+}
+
+.timing:hover{
+	transform: translate(10px, 10px);
+	background: #C3645A;
+}
+
+
+.rotate-perspective:hover{
+	transform: rotateY(180deg);
+	/*Property to preserve the 3d style on the child element, used when you have
+	perspective-property on parent */
+	-webkit-transform-style: preserve-3d;
+}
+
+.skew-perspective:hover{
+		transform: skew(180deg);
+		-webkit-transform-style: preserve-3d;
+}
+
+.custom-anim{
+	/* custom-animation is the name, 1s is duration of animation. Inifinte means
+	that it will loop forever, paused means that it will be pause from the start */
+	animation: custom-animation 1s infinite paused;
+}
+
+.custom-anim:hover{
+	animation-play-state: running; /*On hover, start animation */
+}
+
+
+@keyframes custom-animation{
+	0%{
+		transform: rotate(0);
+	}
+	10%{
+		transform: rotate(10deg);
+	}
+	20%{
+		transform: rotate(-10deg);
+	}
+	100%{
+		transform: rotate(180deg);
+	}
+}
